@@ -1,7 +1,7 @@
 INCLUDES = include/gnl_tester.h
 CC = clang
 FILES = src/main.c
-CFLAGS = -o
+CFLAGS = -g -o
 TARGET = gnl_tester
 GET_NEXT_LINE_DIR = ../get_next_line/
 GET_NEXT_LINE_PROG = ../get_next_line/get_next_line.a
