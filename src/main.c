@@ -6,8 +6,6 @@ int main(void) {
 
 	printf("=== GET_NEXT_LINE_TESTER ===\n");
 	fd = open("testfiles/testfile1", O_RDONLY);
-	printf("%d\n", fd);
-	for (int i = 0; i < 5; i++)
+	for (int i = 0; i < 2; i++)
 		printf("%s", get_next_line(fd));
-	return (0);
 }
