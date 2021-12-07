@@ -13,4 +13,9 @@ int main(void) {
 	fd = open("testfiles/testfile2", O_RDONLY);
 	for (int i = 0; i < 10; i++)
 		printf("%s", get_next_line(fd));
+	close(fd);
+	printf("=== TESTING EMPTY FILE ===\n");
+	fd = open("testfiles/testfile3", O_RDONLY);
+	for (int i = 0; i < 10; i++)
+		printf("%s", get_next_line(fd));
 }
