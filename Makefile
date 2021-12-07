@@ -25,4 +25,4 @@ fclean:
 	rm -f get_next_line.a
 	rm -f $(wildcard ../get_next_line/*.o)
 	rm -f $(GET_NEXT_LINE_PROG)
-	rm -f gnl_tester.dSYM
+	rm -rfv gnl_tester.dSYM

@@ -6,6 +6,11 @@ int main(void) {
 
 	printf("=== GET_NEXT_LINE_TESTER ===\n");
 	fd = open("testfiles/testfile1", O_RDONLY);
-	for (int i = 0; i < 3; i++)
+	for (int i = 0; i < 10; i++)
+		printf("%s", get_next_line(fd));
+	close(fd);
+	printf("=== TESTING SECOND FILE ===\n");
+	fd = open("testfiles/testfile2", O_RDONLY);
+	for (int i = 0; i < 10; i++)
 		printf("%s", get_next_line(fd));
 }
