@@ -24,21 +24,34 @@ int main(void) {
 
 	printf("=== GET_NEXT_LINE_TESTER ===\n");
 	fd = open("testfiles/testfile1", O_RDONLY);
-	for (int i = 0; i < 8; i++)
-		printf("%s", get_next_line(fd));
+	for (int i = 0; i < 8; i++) {
+		char *s = get_next_line(fd);
+		printf("%s", s);
+		free(s);
+	}
 	close(fd);
 	printf("\n=== TESTING SECOND FILE ===\n");
 	fd = open("testfiles/testfile2", O_RDONLY);
-	for (int i = 0; i < 8; i++)
-		printf("%s", get_next_line(fd));
+	for (int i = 0; i < 8; i++) {
+		char *c = get_next_line(fd);
+		printf("%s", c);
+		free(c);
+	}
 	close(fd);
 	printf("\n=== TESTING EMPTY FILE ===\n");
 	fd = open("testfiles/testfile3", O_RDONLY);
-	for (int i = 0; i < 2; i++)
-		printf("%s", get_next_line(fd));
+	for (int i = 0; i < 2; i++) {
+		char *b = get_next_line(fd);
+		printf("%s", b);
+		free(b);
+	}
 	close(fd);
 	printf("\n=== TESTING FILE WITHOUT NEWLINE ===\n");
 	fd = open("testfiles/testfile4", O_RDONLY);
-	for (int i = 0; i < 2; i++)
-		printf("%s", get_next_line(fd));
+	for (int i = 0; i < 2; i++) {
+		char *g = get_next_line(fd);
+		printf("%s", g);
+		free(g);
+	}
+	return (0);
 }
