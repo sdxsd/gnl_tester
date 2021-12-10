@@ -29,38 +29,77 @@ A program is free software if users have all of these freedoms.
 #include "../../get_next_line/get_next_line.h"
 
 int main(void) {
-	int	fd;
+	int		fd;
+	char	*buf;
 
 	printf("=== GET_NEXT_LINE_TESTER ===\n");
 	fd = open("testfiles/testfile1", O_RDONLY);
 	for (int i = 0; i < 8; i++) {
-		char *s = get_next_line(fd);
-		printf("%s", s);
-		free(s);
+		buf = get_next_line(fd);
+		printf("%s", buf);
+		free(buf);
 	}
 	close(fd);
 	printf("\n=== TESTING SECOND FILE ===\n");
 	fd = open("testfiles/testfile2", O_RDONLY);
 	for (int i = 0; i < 8; i++) {
-		char *c = get_next_line(fd);
-		printf("%s", c);
-		free(c);
+		buf = get_next_line(fd);
+		printf("%s", buf);
+		free(buf);
 	}
 	close(fd);
 	printf("\n=== TESTING EMPTY FILE ===\n");
 	fd = open("testfiles/testfile3", O_RDONLY);
 	for (int i = 0; i < 2; i++) {
-		char *b = get_next_line(fd);
-		printf("%s", b);
-		free(b);
+		buf = get_next_line(fd);
+		printf("%s", buf);
+		free(buf);
 	}
 	close(fd);
 	printf("\n=== TESTING FILE WITHOUT NEWLINE ===\n");
 	fd = open("testfiles/testfile4", O_RDONLY);
 	for (int i = 0; i < 2; i++) {
-		char *g = get_next_line(fd);
-		printf("%s", g);
-		free(g);
+		buf = get_next_line(fd);
+		printf("%s", buf);
+		free(buf);
 	}
+	close(fd);
+	printf("\n=== TESTING LONG SINGLE NEWLINE ===\n");
+	fd = open("testfiles/testfile5", O_RDONLY);
+	buf = get_next_line(fd);
+	printf("%s", buf);
+	free(buf);
+	buf = get_next_line(fd);
+	printf("%s", buf);
+	free(buf);
+	close(fd);
+	printf("\n=== TESTING INVALID FILE DESCRIPTORS ===\n");
+	fd = -1;
+	buf = get_next_line(fd);
+	printf("%s", buf);
+	free(buf);
+	printf("\n");
+	printf("=== TESTING BIG LINE WITH NEWLINE ===\n");
+	fd = open("testfiles/testfile6", O_RDONLY);
+	for (int i = 0; i < 3; i++) {
+		buf = get_next_line(fd);
+		if (buf)
+			printf("%zd", strlen(buf));
+		else
+			printf("(null)");
+		free(buf);
+	}
+	close(fd);
+	printf("\n=== TESTING BIG LINE WITH NO NEWLINE ===\n");
+	fd = open("testfiles/testfile7", O_RDONLY);
+	for (int i = 0; i < 3; i++) {
+		buf = get_next_line(fd);
+		if (buf)
+			printf("%zd", strlen(buf));
+		else
+			printf("(null)");
+		free(buf);
+	}
+	printf("\n");
 	return (0);
 }

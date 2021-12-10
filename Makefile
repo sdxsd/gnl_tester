@@ -1,7 +1,7 @@
 INCLUDES = include/gnl_tester.h
 CC = clang
 FILES = src/main.c
-CFLAGS = -D BUFFER_SIZE=8 -g -o
+CFLAGS = -D BUFFER_SIZE=42 -g -o
 TARGET = gnl_tester
 GET_NEXT_LINE_DIR = ../get_next_line/
 GET_NEXT_LINE_PROG = ../get_next_line/get_next_line.a
@@ -9,7 +9,7 @@ GET_NEXT_LINE_PROG = ../get_next_line/get_next_line.a
 all: $(TARGET) run
 
 run:
-	./$(TARGET)
+	./$(TARGET) | cat -e
 
 get_next_line:
 	@make -C $(GET_NEXT_LINE_DIR)
